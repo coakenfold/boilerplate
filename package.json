@@ -1,0 +1,81 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "repository": "https://github.com/coakenfold/boilerplate",
+  "author": "Chad Oakenfold <web@oakenfold.ca> (https://oakenfold.ca/)",
+  "license": "MIT",
+  "scripts": {
+    "start": "",
+    "dev": "",
+    "build": "",
+    "test": "jest --watch",
+    "test:client": "jest --config ./client/jest.config.js --watch",
+    "test:server": "jest --config ./server/jest.config.js --watch",
+    "test:run": "jest --config ./other/jest.config.js --coverage",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "lint": "eslint . --cache --cache-location node_modules/.cache/eslint",
+    "precommit": "lint-staged && npm run --silent validate",
+    "validate": "npm run test:run --silent"
+  },
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "cypress": "^2.0.2",
+    "cypress-testing-library": "^1.0.1",
+    "eslint": "^4.18.0",
+    "eslint-plugin-react": "^7.9.1",
+    "faker": "^4.1.0",
+    "husky": "^0.14.3",
+    "jest": "^22.1.2",
+    "lint-staged": "^7.0.4",
+    "node": "^8.9.4",
+    "prettier": "^1.12.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-test-renderer": "^16.3.1"
+  },
+  "lint-staged": {
+    "linters": {
+      "**/!(README).+(md|css|json)": [
+        "prettier --write",
+        "git add"
+      ],
+      "**/+(src|test|scripts)/**/*.js": [
+        "prettier --write",
+        "eslint --cache --cache-location node_modules/.cache/eslint",
+        "git add"
+      ]
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "rules": {
+      "require-await": "off",
+      "import/prefer-default-export": "off",
+      "babel/new-cap": "off",
+      "import/no-unassigned-import": "off",
+      "react/prop-types": "off",
+      "no-console": "warn",
+      "no-nested-ternary": "off",
+      "jest/no-disabled-tests": "off",
+      "complexity": [
+        "error",
+        12
+      ],
+      "react/no-did-update-set-state": "off",
+      "react/prefer-stateless-function": "off",
+      "react/no-did-mount-set-state": "off"
+    }
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "build",
+    "dist",
+    "coverage"
+  ]
+}
